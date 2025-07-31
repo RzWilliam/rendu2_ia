@@ -10,7 +10,7 @@ function setSeed(text) {
 // Load metadata
 async function loadMetadata() {
     try {
-        const response = await fetch('../models/model_metadata.json');
+        const response = await fetch('/models/model_metadata.json');
         metadata = await response.json();
         console.log('Metadata loaded:', metadata);
     } catch (error) {
@@ -21,7 +21,7 @@ async function loadMetadata() {
 // Load ONNX model
 async function loadModel(modelName) {
     try {
-        const modelPath = `../models/${modelName}_text_generator.onnx`;
+        const modelPath = `/models/${modelName}_text_generator.onnx`;
         model = await ort.InferenceSession.create(modelPath);
         console.log(`Model ${modelName} loaded`);
         return true;
